@@ -1,4 +1,4 @@
-n = str(input("Введите натуральное число"))
+n = str(input("Введите натуральное число\n"))
 result = 0
 for num in n:
     if int(num) % 2 == 0:

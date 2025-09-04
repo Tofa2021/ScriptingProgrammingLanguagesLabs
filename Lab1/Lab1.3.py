@@ -8,7 +8,7 @@ def sum_of_digits(num):
 list = [12, 511, 'Python', 311, 122, 'love']
 for i in range(5):
     element = list[i]
-    if element is int:
+    if type(element) == int:
         if element % 2 == 0:
             print(f"Сумма цифр числа {element} {sum_of_digits(element)}")
         else:
