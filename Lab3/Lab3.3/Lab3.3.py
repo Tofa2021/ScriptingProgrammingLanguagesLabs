@@ -1,8 +1,7 @@
-file = open("Subjects.txt", "r", encoding = "utf-8")
-lines = file.readlines()
-file.close()
+with open("Subjects.txt", "r", encoding = "utf-8") as file:
+    lines = file.readlines()
 
-dict = {}
+subject_hours_dict = {}
 for line in lines:
     split_line = line.split()
     subject_name = split_line[0][:-1]
@@ -12,5 +11,5 @@ for line in lines:
     for hour in hours:
         total_hours += int(hour.split(sep = "(")[0])
 
-    dict[subject_name] = total_hours
-print(dict)
+    subject_hours_dict[subject_name] = total_hours
+print(subject_hours_dict)

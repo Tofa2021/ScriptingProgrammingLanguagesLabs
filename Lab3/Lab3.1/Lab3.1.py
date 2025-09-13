@@ -1,19 +1,14 @@
-file1 = open("F1.txt","w")
+with open("F1.txt","w") as file_1:
+    while (True):
+        string = input("Enter a string: ")
+        if string == "":
+            break
+        file_1.write(string + "\n")
 
-while (True):
-    string = input("Enter a string: ")
-    if string == "":
-        break
-    file1.write(string + "\n")
-file1.close()
+with open("F1.txt","r") as file_1:
+    strings = file_1.readlines()
 
-file1 = open("F1.txt","r")
-strings = file1.readlines()
-print(strings)
-file1.close()
-
-file2 = open("F2.txt","w")
-for string in strings:
-    if string[-2] == "A":
-        file2.write(string)
-file2.close()
+with open("F2.txt","w") as file_2:
+    for string in strings:
+        if string[-2] == "A":
+            file_2.write(string)
