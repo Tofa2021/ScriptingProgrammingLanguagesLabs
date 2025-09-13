@@ -8,10 +8,10 @@ consonantCount = 0
 vowelString = ""
 for word in words:
     for letter in word:
-        if letter in vowels:
+        if letter.lower() in vowels:
             vowelCount += 1
             vowelString += letter
-        elif letter in consonants:
+        elif letter.lower() in consonants:
             consonantCount += 1
 print(f"Количество слов: {len(words)}")
 print(f"Количество гласных: {vowelCount}")
