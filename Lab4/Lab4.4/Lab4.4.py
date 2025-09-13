@@ -19,7 +19,7 @@ class Car:
             print("Двигатель уже запущен")
 
     def stop_engine(self):
-        if not self.is_running:
+        if self.is_running:
             self.is_running = False
             print("Двигатель остановлен")
         else:
@@ -78,7 +78,7 @@ class Car:
     def is_vintage_car(year):
         from datetime import datetime
         current_year = datetime.now().year
-        return year - current_year >= 25
+        return current_year - year >= 25
 
 car_1 = Car("BMW", "M3", 2015, 4.5, "sedan")
 print(car_1.get_info())
