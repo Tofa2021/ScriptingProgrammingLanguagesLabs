@@ -1,4 +1,5 @@
-vowels = "АаЕеЁёУуОоЫыЯяИиЮю"
+vowels = "аеёуоыяию"
+consonants = "йцкнгшщзхъфвпрлджчсмтьб"
 
 text = str(input("Введите текст\n"))
 words = text.split()
@@ -10,7 +11,7 @@ for word in words:
         if letter in vowels:
             vowelCount += 1
             vowelString += letter
-        else:
+        elif letter in consonants:
             consonantCount += 1
 print(f"Количество слов: {len(words)}")
 print(f"Количество гласных: {vowelCount}")
