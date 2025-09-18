@@ -1,6 +1,2 @@
-n = str(input("Введите натуральное число\n"))
-result = 0
-for num in n:
-    if int(num) % 2 == 0:
-        result += int(num)
-print(result)
+n = int(input("Введите натуральное число\n"))
+print(sum(int(digit) for digit in str(n) if int(digit) % 2 == 0))

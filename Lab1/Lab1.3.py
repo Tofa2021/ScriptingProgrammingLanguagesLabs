@@ -1,16 +1,9 @@
-def sum_of_digits(num):
-    sum = 0
-    while num > 0:
-        sum += num % 10
-        num //= 10
-    return sum
-
-list = [12, 511, 'Python', 311, 122, 'love']
-for i in range(5):
-    element = list[i]
-    if type(element) == int:
+my_list = [12, 511, 'Python', 311, 122, 'love']
+for element in my_list:
+    if isinstance(element, int):
         if element % 2 == 0:
-            print(f"Сумма цифр числа {element} {sum_of_digits(element)}")
+            digits_sum = sum(int(digit) for digit in str(abs(element)) if int(digit) % 2 == 0)
+            print(f"Сумма цифр числа {element} {digits_sum}")
         else:
-            list[i] = 1
-print(list)
+            my_list[my_list.index(element)] = 1
+print(my_list)
