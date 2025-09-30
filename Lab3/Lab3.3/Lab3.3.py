@@ -1,15 +1,7 @@
-with open("Subjects.txt", "r", encoding = "utf-8") as file:
-    lines = file.readlines()
+with open("Subjects.txt", encoding="utf-8") as file:
+    subject_hours_dict = {
+        parts[0][:-1]: sum(int(h.split("(")[0]) for h in parts[1:])
+        for parts in (line.split() for line in file)
+    }
 
-subject_hours_dict = {}
-for line in lines:
-    split_line = line.split()
-    subject_name = split_line[0][:-1]
-    hours = split_line[1:]
-
-    total_hours = 0
-    for hour in hours:
-        total_hours += int(hour.split(sep = "(")[0])
-
-    subject_hours_dict[subject_name] = total_hours
 print(subject_hours_dict)
