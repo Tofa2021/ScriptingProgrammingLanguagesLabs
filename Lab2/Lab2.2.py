@@ -5,38 +5,26 @@ from sympy import primerange
 def fun(fun_input):
     match fun_input:
         case list():
-            even_numbers = []
-            for element in fun_input:
-                if element % 2 == 0:
-                    even_numbers.append(element)
-            print(f"Четные числа: {even_numbers}")
+            evens = [i for i in fun_input if i % 2 == 0]
+            print(f"Четные числа: {evens}")
 
-            is_first_negative_found = False
-            second_negative_index = 0
-            for index, element in enumerate(fun_input):
-                if element < 0:
-                    if is_first_negative_found:
-                        second_negative_index = index
-                        break
-                    else:
-                        is_first_negative_found = True
-            if second_negative_index != 0:
-                return sum(fun_input[second_negative_index + 1:])
+            negatives = [i for i in fun_input if i < 0]
+            if len(negatives) >= 2:
+                return sum(fun_input[negatives[1] + 1:])
             else:
                 print("Нет двух отрицательных чисел")
                 return 0
+
         case set():
             return max(fun_input), min(fun_input)
+
         case int():
             print(f"Все простые числа до {fun_input}: {list(primerange(0, fun_input))}")
-            return None
+
         case str():
-            digits = []
-            for char in fun_input:
-                if char.isdigit():
-                    digits.append(int(char))
+            digits = [i for i in fun_input if i.isdigit()]
             print(f"Цифры в строке: {digits}")
-            return None
+
         case _:
             return fun_input
 
