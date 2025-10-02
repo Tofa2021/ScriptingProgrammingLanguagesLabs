@@ -1,18 +1,22 @@
-from mpmath import swap_row
+def show_matrix(matrix, rows, cols):
+    print("Ваш массив:")
+    for i in range(rows):
+        for j in range(cols):
+            print(matrix[i][j], end=' ')
+        print()
 
-print("Введите n")
-n = int(input())
-print("Введите m")
-m = int(input())
+n = int(input("Введите n:"))
+m = int(input("Введите m:"))
 
-print("Введите значения матрицы")
-matrix = [[input() for _ in range(n)] for _ in range(m)]
-print(matrix)
+print("Введите значения матрицы:")
+nums = input().split()
+matrix = [[int(input()) for _ in range(n)] for _ in range(m)]
+show_matrix(matrix, n, m)
 
-print("Введите i")
-i = int(input())
-print("Введите j")
-j = int(input())
+i = int(input("Введите i:")) - 1
+j = int(input("Введите j:")) - 1
 
-swap_row(matrix, i, j)
-print(matrix)
+for row in matrix:
+    row[i], row[j] = row[j], row[i]
+
+show_matrix(matrix, n, m)

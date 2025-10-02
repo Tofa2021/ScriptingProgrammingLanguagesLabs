@@ -1,5 +1,3 @@
-from unittest import case
-
 from sympy import primerange
 
 def fun(fun_input):
@@ -24,9 +22,6 @@ def fun(fun_input):
         case str():
             digits = [i for i in fun_input if i.isdigit()]
             print(f"Цифры в строке: {digits}")
-
-        case _:
-            return fun_input
 
 numbers_list = [3, -4, 3, -1, 3, 4, 4, 8]
 print(f"Сумма чисел после второго отрицательного {fun(numbers_list)}")

@@ -1,10 +1,6 @@
 from math import sqrt
 
 def triangle(side):
-    triangle_square = sqrt(3) / 4 * side ** 2
-    triangle_perimeter = 3 * side
-    return triangle_square, triangle_perimeter
+    return sqrt(3) / 4 * side ** 2, 3 * side
 
-square, perimeter = triangle(10)
-print(square)
-print(perimeter)
+print(triangle(10))
