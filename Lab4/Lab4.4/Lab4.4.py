@@ -1,88 +1,57 @@
-class Car:
-    car_types = ['sedan', 'suv', 'coupe', 'hatchback', 'truck']
+from datetime import datetime
 
-    def __init__(self, brand, model, year, fuel_consumption, car_type):
-        self.brand = brand
-        self.model = model
+class LibraryBook:
+    genres = ['Fiction', 'Non-fiction', 'Mystery', 'Science', 'Biography']
+
+    def __init__(self, title, author, year, genre, is_checked_out=False):
+        self.title = title
+        self.author = author
         self.year = year
-        self.fuel_consumption = fuel_consumption
-        self.car_type = car_type
-        self.is_running = False
-        self.mileage = 0
-        self.fuel = 0
+        self.genre = genre
+        self.is_checked_out = is_checked_out
 
-    def start_engine(self):
-        if not self.is_running:
-            self.is_running = True
-            print("Двигатель запущен")
+    def check_out(self):
+        if not self.is_checked_out:
+            self.is_checked_out = True
+            print(f'Книга "{self.title}" взята')
         else:
-            print("Двигатель уже запущен")
+            print(f'Книга "{self.title}" уже взята')
 
-    def stop_engine(self):
-        if self.is_running:
-            self.is_running = False
-            print("Двигатель остановлен")
+    def return_book(self):
+        if self.is_checked_out:
+            self.is_checked_out = False
+            print(f'Книга "{self.title}" возвращена')
         else:
-            print("Двигатель уже остановлен")
-
-    def get_available_distance(self):
-        return self.fuel / self.fuel_consumption * 100
-
-    def drive(self, distance):
-        if not self.is_running:
-            print("Двигатель не запущен")
-            return
-
-        available_distance = self.get_available_distance()
-        print(f"Можете проехать {available_distance} км")
-        if available_distance < distance:
-            print(f"Топливо закочилось. Проехали {available_distance} км")
-            self.fuel = 0
-            self.is_running = False
-            self.mileage += available_distance
-        else:
-            print(f"Проехали {distance} км")
-            self.fuel -= distance * self.fuel_consumption / 100
-            self.mileage += distance
-
-    def refuel(self, amount):
-        if amount > 0:
-            self.fuel += amount
-        else:
-            print("Невозможное количесто топлива")
+            print(f'Книга "{self.title}" не была взята')
 
     def get_info(self):
-        return (f"Марка: {self.brand}. Модель: {self.model}. Год: {self.year}. Тип: {self.car_type}\n"
-                f"Расход топлива: {self.fuel_consumption} л на 100 км. Пробег: {self.mileage} км\n"
-                f"Топливо: {self.fuel} л")
+        status = 'в наличии' if not self.is_checked_out else 'выдана'
+        return f'"{self.title}" ({self.year}), {self.author}, жанр: {self.genre}, статус: {status}'
 
     @classmethod
-    def get_car_types(cls):
-        return cls.car_types
+    def get_genres(cls):
+        return cls.genres
 
     @classmethod
-    def from_dict(cls, car_dict):
+    def from_dict(cls, data_dict):
         return cls(
-            brand = car_dict['brand'],
-            model = car_dict['model'],
-            year = car_dict['year'],
-            fuel_consumption = car_dict['fuel_consumption'],
-            car_type = car_dict['car_type'],
+            title=data_dict['title'],
+            author=data_dict['author'],
+            year=data_dict['year'],
+            genre=data_dict['genre'],
+            is_checked_out=data_dict.get('is_checked_out', False)
         )
 
     @staticmethod
-    def calculate_necessary_fuel(distance, fuel_consumption):
-        return distance * fuel_consumption
-
-    @staticmethod
-    def is_vintage_car(year):
-        from datetime import datetime
+    def is_classic(year):
         current_year = datetime.now().year
-        return current_year - year >= 25
+        return current_year - year >= 50
 
-car_1 = Car("BMW", "M3", 2015, 4.5, "sedan")
-print(car_1.get_info())
-car_1.refuel(45)
-car_1.start_engine()
-car_1.drive(100)
-print(car_1.get_info())
+
+# Пример использования
+book = LibraryBook("Война и мир", "Лев Толстой", 1869, "Fiction")
+print(book.get_info())
+book.check_out()
+print(f"Классика ли? {LibraryBook.is_classic(book.year)}")
+book.return_book()
+print(LibraryBook.get_genres())

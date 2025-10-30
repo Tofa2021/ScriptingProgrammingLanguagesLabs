@@ -1,1 +1,4 @@
-<__main__.Fish object at 0x000001D1848DD7F0><__main__.Fish object at 0x000001D184855310><__main__.Bird object at 0x000001D1848DD940><__main__.Bird object at 0x000001D184856210>
+Рыба Порода1 200
+Рыба Порода2 250
+Птица Порода3 560
+Птица Порода4 420
