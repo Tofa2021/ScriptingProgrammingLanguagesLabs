@@ -39,7 +39,7 @@ class LibraryBook:
             author=data_dict['author'],
             year=data_dict['year'],
             genre=data_dict['genre'],
-            is_taken=data_dict.get('is_checked_out', False)
+            is_taken=data_dict.get('is_taken', False)
         )
 
     @staticmethod
