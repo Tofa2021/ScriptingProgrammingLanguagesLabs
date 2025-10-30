@@ -20,7 +20,7 @@ class List:
         self._size = 0
 
     def get(self, index):
-        return self._elements.__getitem__(index)
+        return self._elements[index]
 
 my_list = List()
 my_list.append(1)

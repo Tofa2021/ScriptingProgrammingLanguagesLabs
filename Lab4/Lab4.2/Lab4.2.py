@@ -14,17 +14,18 @@ class Alphabet:
         return len(self.letters)
 
 class EngAlphabet(Alphabet):
+    __letters_num = 26
+
     def __init__(self, lang, letters):
         super().__init__("En", string.ascii_uppercase)
-        __letters_num = len(letters)
 
     def is_en_letter(self, letter):
         return letter in self.letters
 
     @override
     def letters_num(self):
-        return len(self.__letters_num)
+        return self.__letters_num
 
     @staticmethod
-    def example(self):
+    def example():
         return "Hello world"

@@ -8,6 +8,11 @@ class Animal:
     def move(self):
         print("Неизвестное передвижение")
 
+class Dog(Animal):
+    def __init__(self, breed, price):
+        super().__init__(breed, price)
+
+    @override
     def __str__(self):
         return f"Животное {self.breed} {self.price}\n"
 
@@ -44,32 +49,24 @@ class ZooShop:
     def add_animal(self, animal):
         self.animals.append(animal)
 
-    def get_most_expensive_breed(self):
-        if not self.animals:
-            return None
-
-        most_expensive_animal = self.animals[0]
-        for animal in self.animals:
-            if animal.price > most_expensive_animal.price:
-                most_expensive_animal = animal
-
-        return most_expensive_animal
+    def get_most_expensive_animal(self):
+        return max(self.animals, key=lambda animal: animal.price)
 
     def save_to_file(self):
         with open("Animals.txt", "w", encoding="utf-8") as file:
             for animal in self.animals:
                 file.write(animal.__str__())
 
-animal1 = Fish("Порода1", 200)
-animal2 = Fish("Порода2", 250)
-animal3 = Bird("Порода3", 560)
-animal4 = Bird("Порода4", 420)
+fish1 = Fish("Порода1", 200)
+fish2 = Fish("Порода2", 250)
+bird1 = Bird("Порода3", 560)
+bird2 = Bird("Порода4", 420)
 
 ZooShop = ZooShop()
-ZooShop.add_animal(animal1)
-ZooShop.add_animal(animal2)
-ZooShop.add_animal(animal3)
-ZooShop.add_animal(animal4)
+ZooShop.add_animal(fish1)
+ZooShop.add_animal(fish2)
+ZooShop.add_animal(bird1)
+ZooShop.add_animal(bird2)
 ZooShop.save_to_file()
 
-print(ZooShop.get_most_expensive_breed())
+print(ZooShop.get_most_expensive_animal())

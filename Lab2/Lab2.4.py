@@ -7,5 +7,7 @@ except ValueError:
     print("Делимое и делитель должны быть числами")
 except ZeroDivisionError:
     print("Деление на ноль")
+else:
+    pass
 finally:
     print("Finally")
