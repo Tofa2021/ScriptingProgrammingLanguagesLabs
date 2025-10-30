@@ -8,13 +8,8 @@ class Animal:
     def move(self):
         print("Неизвестное передвижение")
 
-class Dog(Animal):
-    def __init__(self, breed, price):
-        super().__init__(breed, price)
-
-    @override
-    def __str__(self):
-        return f"Животное {self.breed} {self.price}\n"
+    def print_info(self):
+        print(f"Животное {self.breed} {self.price}\n")
 
 class Fish(Animal):
     def __init__(self, breed, price):
@@ -24,9 +19,8 @@ class Fish(Animal):
     def move(self):
         print("Рыба плывет")
 
-    @override
-    def __str__(self):
-        return f"Рыба {self.breed} {self.price}\n"
+    def print_info(self):
+        print(f"Рыба {self.breed} {self.price}\n")
 
 class Bird(Animal):
     def __init__(self, name, price):
@@ -36,9 +30,8 @@ class Bird(Animal):
     def move(self):
         print("Птица летает")
 
-    @override
-    def __str__(self):
-        return f"Птица {self.breed} {self.price}\n"
+    def print_info(self):
+        print(f"Птица {self.breed} {self.price}\n")
 
 class ZooShop:
     def __init__(self, animals = None):
@@ -69,4 +62,4 @@ ZooShop.add_animal(bird1)
 ZooShop.add_animal(bird2)
 ZooShop.save_to_file()
 
-print(ZooShop.get_most_expensive_animal())
+ZooShop.get_most_expensive_animal().print_info()
