@@ -47,8 +47,6 @@ class LibraryBook:
         current_year = datetime.now().year
         return current_year - year >= 50
 
-
-# Пример использования
 book = LibraryBook("Война и мир", "Лев Толстой", 1869, "Роман-эпопея")
 print(book.get_info())
 print(f"Классика ли? {LibraryBook.is_classic(book.year)}")

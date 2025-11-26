@@ -28,4 +28,4 @@ my_list.append(2)
 my_list.append(3)
 my_list.append(4)
 
-print(my_list.get(3))
+print(f'Элемент по индексу 3: {my_list.get(3)}')

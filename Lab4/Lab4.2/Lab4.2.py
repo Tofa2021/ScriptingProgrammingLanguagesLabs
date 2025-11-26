@@ -16,7 +16,7 @@ class Alphabet:
 class EngAlphabet(Alphabet):
     __letters_num = 26
 
-    def __init__(self, lang, letters):
+    def __init__(self):
         super().__init__("En", string.ascii_uppercase)
 
     def is_en_letter(self, letter):
@@ -29,3 +29,6 @@ class EngAlphabet(Alphabet):
     @staticmethod
     def example():
         return "Hello world"
+
+english_alphabet = EngAlphabet()
+print(english_alphabet.example())
